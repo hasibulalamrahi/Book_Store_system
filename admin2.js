@@ -12,7 +12,7 @@ class Book {
   class UI {
     static displayBooks() {
       const books = Store.getBooks();
-  
+      console.log(books);
       books.forEach((book) => UI.addBookToList(book));
     }
   
@@ -22,7 +22,7 @@ class Book {
       let name = book.isbn;
       url+=name;
       let chk = '<a href ="'+ url+'">'+name+'</a>'
-
+      // let imgTag = '<img src =" '+imgUrl'" alt  '
       const row = document.createElement('tr');
       
   
@@ -73,12 +73,15 @@ class Book {
       } else {
         books = JSON.parse(localStorage.getItem('books'));
       }
-  
+      // console.log(books);
+
       return books;
     }
   
     static addBook(book) {
+      // console.log(book);
       const books = Store.getBooks();
+      console.log(books);
       books.push(book);
       localStorage.setItem('books', JSON.stringify(books));
     }
@@ -96,7 +99,22 @@ class Book {
     }
   }
   
-  // Event: Display Books
+//Holding back redirecting unauthorizely  
+
+
+//   Date.prototype.addHours = function(h) {    
+//     this.setTime(this.getTime() + (h*60*60*1000)); 
+//     return this;   
+//  }
+  if (sessionStorage.getItem('AuthenticationState') === null) {
+    window.open("AccessDenied.html", "_self");
+ }
+//  else if (Date.now > new Date(sessionStorage.getItem('AuthenticationExpires'))) {
+//   window.open("AccessDenied.html", "_self");
+//  }
+
+
+ // Event: Display Books 
   document.addEventListener('DOMContentLoaded', UI.displayBooks);
   
   // Event: Add a Book
@@ -113,7 +131,7 @@ class Book {
   
     // Validate
     if(title === '' || author === '' || isbn === ''|| img ==='' ) {
-      UI.showAlert('Please fill in all fields', 'danger');
+      UI.showAlert('Please fill in all fields','danger');
     } else {
       // Instatiate book
       const book = new Book(title, author, isbn,img);
@@ -125,7 +143,7 @@ class Book {
       Store.addBook(book);
   
       // Show success message
-      UI.showAlert('Book Added', 'success');
+      UI.showAlert('Book Added','success');
   
       // Clear fields
       UI.clearFields();
@@ -135,6 +153,7 @@ class Book {
   // Event: Remove a Book
   document.querySelector('#book-list').addEventListener('click', (e) => {
     // Remove book from UI
+    console.log(e.target);
     UI.deleteBook(e.target);
   
     // Remove book from store
@@ -144,6 +163,7 @@ class Book {
     UI.showAlert('Book Removed', 'success');
   });
   
+
   function pageRedirectLogOut(){
-    window.location.replace("index1.html");
+    window.location.replace("index.html");
 }

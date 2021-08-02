@@ -17,7 +17,7 @@ function processInput(e){
         alert("Incorrect email or Password Combination");
     }
     else{
-        var user = new newUser(username, emailAdress, Password);
+        let user = new newUser(username, emailAdress, Password);
         alert("Thank you for registering , Please sign In again to continue");
     }
     

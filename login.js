@@ -24,7 +24,7 @@ function checkLogin(username, password){
     console.log(register);
     console.log(register.length);
      for(var user = 0 ; user<(register.length );user++){
-        console.log(register[user].Password);
+        // console.log(register[user].Password);
        if(register[user].username == username && register[user].Password == password){
             return register[user].id;
         }
@@ -52,8 +52,12 @@ function wrongCreds(){
     
 }
 
+// Date.prototype.addHours = function(h) {    
+//     this.setTime(this.getTime() + (h*60*60*1000)); 
+//     return this;   
+//  }
 
-document.querySelector ('#adminLogin').addEventListener('submit',(e) =>{
+ document.querySelector ('#adminLogin').addEventListener('submit',(e) =>{
     e.preventDefault();
     const AdminId = document.querySelector('#adminId').value;
     const AdminUserName = document.querySelector('#adminUserName').value;
@@ -62,6 +66,10 @@ document.querySelector ('#adminLogin').addEventListener('submit',(e) =>{
     if((AdminId == "1234") && (AdminUserName == "Hasib") && (passval == "12") ){
         console.log("Y");
       document.getElementById("adminLogin").reset();
+      sessionStorage.setItem("AuthenticationState", "Authenticated");
+                
+      //This authentication key will expire in 1 hour.
+    //   sessionStorage.setItem("AuthenticationExpires", Date.now.addHours(1));
       window.location.replace("admin_login.html");
 
 
@@ -74,3 +82,4 @@ document.querySelector ('#adminLogin').addEventListener('submit',(e) =>{
 
     
 });
+

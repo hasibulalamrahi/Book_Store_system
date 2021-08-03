@@ -9,7 +9,7 @@ function processInput(e){
     let Password = form.querySelector('#Password').value;
     let confirmPass =form.querySelector('#confirmPassword').value;
     let emailLen = emailAdress.length;
-    //console.log(emailLen);
+    // console.log(username);
     if(username == ''||emailAdress == ''||Password==''){
         alert("Please clear all the fields")
     }
@@ -17,7 +17,7 @@ function processInput(e){
         alert("Incorrect email or Password Combination");
     }
     else{
-        let user = new newUser(username, emailAdress, Password);
+        var user = new newUser(username, emailAdress, Password);
         alert("Thank you for registering , Please sign In again to continue");
     }
     

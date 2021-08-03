@@ -11,6 +11,10 @@ class Book {
   // UI Class: Handle UI Tasks
   class UI {
     static displayBooks() {
+      if (sessionStorage.getItem('AuthenticationState') === null) {
+        alert("Seesion Expired, Login Again to continue");
+        window.open("Admin_Login.html", "_self");
+     }
       const books = Store.getBooks();
       console.log(books);
       books.forEach((book) => UI.addBookToList(book));
@@ -106,9 +110,9 @@ class Book {
 //     this.setTime(this.getTime() + (h*60*60*1000)); 
 //     return this;   
 //  }
-  if (sessionStorage.getItem('AuthenticationState') === null) {
-    window.open("AccessDenied.html", "_self");
- }
+//   if (sessionStorage.getItem('AuthenticationState') === null) {
+//     window.open("Admin_Login.html", "_self");
+//  }
 //  else if (Date.now > new Date(sessionStorage.getItem('AuthenticationExpires'))) {
 //   window.open("AccessDenied.html", "_self");
 //  }
@@ -165,5 +169,8 @@ class Book {
   
 
   function pageRedirectLogOut(){
-    window.location.replace("index.html");
+    window.location.replace("Admin_Login.html");
 }
+  function backToUserLogin(){
+    window.location.replace("Login_sucess.html");
+  }

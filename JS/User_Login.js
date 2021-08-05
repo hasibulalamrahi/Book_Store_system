@@ -39,8 +39,8 @@ function loginUser(id){
 
     // user = register[id];
 
-   
-    sessionStorage.setItem("AuthenticationState", "Authenticated");
+    localStorage.setItem("userAllow","allow");
+    localStorage.setItem("HideState", "Hide");
 
     setTimeout(() => {
         window.location.replace('./Landing_page.html');

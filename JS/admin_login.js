@@ -7,11 +7,11 @@ document.querySelector ('#adminLogin').addEventListener('submit',(e) =>{
     if((AdminId == "1234") && (AdminUserName == "Hasib") && (passval == "12") ){
         console.log("Y");
       document.getElementById("adminLogin").reset();
-      // localStorage.setItem("AuthenticationState", "Authenticated");
-                
+       localStorage.setItem("userAllow", "allow");
+      //  localStorage.setItem("Allow","allow");         
       //This authentication key will expire in 1 hour.
-    //   localStorage.setItem("AuthenticationExpires", Date.now.addHours(1));
-      window.location.replace("Landing_page.html");
+    // localStorage.setItem("AuthenticationExpires", Date.now.addHours(1));
+       window.location.replace("Landing_page.html");
 
 
     }

@@ -59,7 +59,7 @@
         return books;
       }
 
-      if (sessionStorage.getItem('AuthenticationState') === 'Authenticated') {
+      if (localStorage.getItem('HideState') === "Hide") {
         // alert("Seesion Expired, Login Again to continue");
             document.addEventListener('DOMContentLoaded', () => {
             var HideAdminEdit = document.querySelector("#admin_Edit");
@@ -73,19 +73,32 @@
         // window.open("Admin_Login.html", "_self");
      }
       // document.addEventListener('DOMContentLoaded',UI.showBooks);
-    UI.showBooks();
+      if (localStorage.getItem('adminAllow') === " " && localStorage.getItem('userAllow') === "") {
+        alert("Session Expired, Login again to Continue");
+        window.location.replace("Admin_Login.html", "_self");
+     }
+     else{
+      UI.showBooks();
+
+     }
+     
+      // UI.showBooks();
+    
+   
 
 
 
     function pageRedirectLogOut(){
         // console.log('a');
-        sessionStorage.setItem("AuthenticationState","");
-
+        // sessionStorage.setItem("AuthenticationState","");
+        localStorage.setItem("userAllow","");
+        localStorage.setItem("adminAllow"," ");
+        localStorage.setItem("HideState", "");
         window.location.replace("User_Login_page.html");
     }
       
     function intoAdminEdit(){
-
+          localStorage.setItem("adminAllow","allow");
           window.location.replace("admin_edit.html");
       
     }

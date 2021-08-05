@@ -11,8 +11,8 @@ class Book {
   // UI Class: Handle UI Tasks
   class UI {
     static displayBooks() {
-    //   if (sessionStorage.getItem('AuthenticationState') === null) {
-    //     alert("Seesion Expired, Login Again to continue");
+    //   if (localStorage.getItem('tokenallow') === null) {
+    //     alert("session expired");
     //     window.open("Admin_Login.html", "_self");
     //  }
       const books = Store.getBooks();
@@ -92,7 +92,7 @@ class Book {
   
     static removeBook(isbn) {
       const books = Store.getBooks();
-  
+      alert("Do You Want to remove this Book");
       books.forEach((book, index) => {
         // console.log(index);
         if(book.isbn === isbn) {
@@ -113,9 +113,10 @@ class Book {
 //     this.setTime(this.getTime() + (h*60*60*1000)); 
 //     return this;   
 //  }
-//   if (sessionStorage.getItem('AuthenticationState') === null) {
-//     window.open("Admin_Login.html", "_self");
-//  }
+  if (localStorage.getItem('userAllow') === "" || localStorage.getItem('adminAllow')=== "") {
+    alert("Session Expired, Login again to Continue");
+    window.location.replace("Admin_Login.html", "_self");
+ }
 //  else if (Date.now > new Date(sessionStorage.getItem('AuthenticationExpires'))) {
 //   window.open("AccessDenied.html", "_self");
 //  }
@@ -172,6 +173,9 @@ class Book {
   
 
   function pageRedirectLogOut(){
+    localStorage.setItem("userAllow","");
+    localStorage.setItem("adminAllow","");
+
     window.location.replace("Admin_Login.html");
 }
   function backToUserLogin(){

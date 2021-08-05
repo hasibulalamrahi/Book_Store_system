@@ -11,6 +11,11 @@
     <title>Book List app</title>
 <body>
     <h1>Thanks For the login</h1>
+    <div class = "buttons">
+      <button class="form  " id ="admin_Edit" type="button" onclick="intoAdminEdit()">Admin Edit</button>
+      <button class="form__button_logout"  type="button" onclick="pageRedirectLogOut()">Log Out</button> 
+    </div>
+    
     <form>
 
         <table class="table table-striped mt-5">
@@ -27,12 +32,11 @@
 
             <tbody id="book-list"></tbody>
           </table>
-        <button class="form__button_logout"  type="button" onclick="pageRedirectLogOut()">Log Out</button> 
-        <!-- <button class="form " id ="admin_Edit" type="button" onclick="intoAdminEdit()">Admin Edit</button> -->
+
 
     </form>
-    
-    <script src = "./JS/UserLogin.js"> </script>
+
+    <script src = "./JS/Landing_Page.js"> </script>
 
 </body>
 </html>

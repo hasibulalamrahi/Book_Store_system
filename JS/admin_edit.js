@@ -11,10 +11,10 @@ class Book {
   // UI Class: Handle UI Tasks
   class UI {
     static displayBooks() {
-      if (sessionStorage.getItem('AuthenticationState') === null) {
-        alert("Seesion Expired, Login Again to continue");
-        window.open("Admin_Login.html", "_self");
-     }
+    //   if (sessionStorage.getItem('AuthenticationState') === null) {
+    //     alert("Seesion Expired, Login Again to continue");
+    //     window.open("Admin_Login.html", "_self");
+    //  }
       const books = Store.getBooks();
       console.log(books);
       books.forEach((book) => UI.addBookToList(book));
@@ -94,7 +94,10 @@ class Book {
       const books = Store.getBooks();
   
       books.forEach((book, index) => {
+        // console.log(index);
         if(book.isbn === isbn) {
+          console.log(index);
+
           books.splice(index, 1);
         }
       });
@@ -157,12 +160,12 @@ class Book {
   // Event: Remove a Book
   document.querySelector('#book-list').addEventListener('click', (e) => {
     // Remove book from UI
-    console.log(e.target);
+    // console.log(e.target);
     UI.deleteBook(e.target);
   
     // Remove book from store
-    Store.removeBook(e.target.parentElement.previousElementSibling.textContent);
-  
+    Store.removeBook(e.target.parentElement.previousElementSibling.previousElementSibling.textContent);
+    // console.log(e.target.parentElement.previousElementSibling.previousElementSibling.textContent);
     // Show success message
     UI.showAlert('Book Removed', 'success');
   });
@@ -172,5 +175,5 @@ class Book {
     window.location.replace("Admin_Login.html");
 }
   function backToUserLogin(){
-    window.location.replace("Login_sucess.html");
+    window.location.replace("Landing_page.html");
   }

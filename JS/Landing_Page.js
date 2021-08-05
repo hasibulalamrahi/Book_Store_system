@@ -1,18 +1,6 @@
 
 
 //In this segment we will be  doing the Hidein and Unhide the Create account ,Admin Login upon pressing them
-// document.addEventListener( () => {
-//     var HideAdminEdit = document.querySelector("#admin_Edit");
-    
-//     // const createAccountForm = document.querySelector("#createAccount");
-//     // const adminLogin = document.querySelector("#adminLogin");
-//     // const notlinkAdminLogIN = document.querySelector("#notlinkAdminLogIN");
-
-//     document.querySelector("#form_button1").addEventListener("submit", e => {
-//         e.preventDefault();
-//         HideAdminEdit.classList.add("form1--hidden");
-//         // createAccountForm.classList.remove("form--hidden");
-//     });
 
     // document.querySelector("#linkLogin").addEventListener("click", e => {
     //     e.preventDefault();
@@ -31,11 +19,8 @@
     // });
 
     class UI {
-        static displayBooks() {
-          if (localStorage.getItem('AuthenticationState') === null) {
-            alert("Seesion Expired, Login Again to continue");
-            window.open("Admin_Login.html", "_self");
-         }
+        static showBooks() {
+          
           const books = getBooks();
           console.log(books);
           books.forEach((book) => UI.addBookToList(book));
@@ -74,17 +59,43 @@
         return books;
       }
 
-      document.addEventListener('DOMContentLoaded',UI.displayBooks);
+      if (sessionStorage.getItem('AuthenticationState') === 'Authenticated') {
+        // alert("Seesion Expired, Login Again to continue");
+            document.addEventListener('DOMContentLoaded', () => {
+            var HideAdminEdit = document.querySelector("#admin_Edit");
+        
+            // document.querySelector("#form_button1").addEventListener("submit", e => {
+                // e.preventDefault();
+                HideAdminEdit.classList.add("form1--hidden");
+                // createAccountForm.classList.remove("form--hidden");
+            });
+
+        // window.open("Admin_Login.html", "_self");
+     }
+      // document.addEventListener('DOMContentLoaded',UI.showBooks);
+    UI.showBooks();
 
 
 
+    function pageRedirectLogOut(){
+        // console.log('a');
+        sessionStorage.setItem("AuthenticationState","");
 
-      function pageRedirectLogOut(){
-        console.log('a');
-        window.location.replace("Login.html");
+        window.location.replace("User_Login_page.html");
     }
-    
+      
     function intoAdminEdit(){
-        window.location.replace("admin_homepage.html");
-    
+
+          window.location.replace("admin_edit.html");
+      
     }
+
+    // document.addEventListener('DOMContentLoaded', () => {
+    //   var HideAdminEdit = document.querySelector("#admin_Edit");
+  
+    //   // document.querySelector("#form_button1").addEventListener("submit", e => {
+    //       // e.preventDefault();
+    //       HideAdminEdit.classList.add("form1--hidden");
+    //       // createAccountForm.classList.remove("form--hidden");
+    //   });
+  

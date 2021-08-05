@@ -1,10 +1,8 @@
 let form1 = document.querySelector('#login');
-
 form1.addEventListener('submit', processInput);
 
 function processInput(e){
     e.preventDefault();
-
     let username = form1.querySelector('#username').value;
     let password = form1.querySelector('#Password1').value;
     console.log(username);
@@ -16,6 +14,7 @@ function processInput(e){
     }
     else{
         loginUser(id);
+        
     }
 }
 
@@ -35,16 +34,18 @@ function checkLogin(username, password){
 }
 
 function loginUser(id){
-    let data = localStorage.getItem('register');
-    let register = JSON.parse(data);
+    // let data = localStorage.getItem('register');
+    // let register = JSON.parse(data);
 
-    user = register[id];
+    // user = register[id];
 
    
+    sessionStorage.setItem("AuthenticationState", "Authenticated");
 
     setTimeout(() => {
-        window.location.replace('./ActualuserLogin.html');
+        window.location.replace('./Landing_page.html');
     }, 1000);
+
     
 }
 
@@ -59,3 +60,15 @@ function wrongCreds(){
 //  }
 
  
+// document.addEventListener( () => {
+//     var HideAdminEdit = document.querySelector("#admin_Edit");
+    
+//     // const createAccountForm = document.querySelector("#createAccount");
+//     // const adminLogin = document.querySelector("#adminLogin");
+//     // const notlinkAdminLogIN = document.querySelector("#notlinkAdminLogIN");
+
+//     // document.querySelector("#form_button1").addEventListener("submit", e => {
+//     //     e.preventDefault();
+//         HideAdminEdit.classList.add("form1--hidden");
+//         // createAccountForm.classList.remove("form--hidden");
+//     });

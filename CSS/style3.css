@@ -1,3 +1,7 @@
 .redirectPage{
     text-align: right;
 }
+
+.form2--hidden {
+    display: none;
+  } 
